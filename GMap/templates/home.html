@@ -4,12 +4,13 @@
 <h1>Kindergarten Test</h1>
 
 <form method="post" action="./">
-	{% csrf_token %}
-	<table>
-		{{ form }}
-	</table>
-	<input type="submit" value="Search" />
+    {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="Search" />
 </form>
+
 
 {% if kindergartens %}
 <h2>Kindergartens near you</h2>
