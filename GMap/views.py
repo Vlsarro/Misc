@@ -14,7 +14,7 @@ from GMap import forms, models
 def geocode_address(address):
 
     address = address.encode('utf-8')
-    geocoder = geocoders.GoogleV3()
+    geocoder = geocoders.Yandex()
     try:
         _, latlon = geocoder.geocode(address)
     except (URLError, ValueError):

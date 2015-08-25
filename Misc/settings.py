@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 # skey - is a module, that contains secret key and database password
-from skey import Seckey, dbpass 
+from skey import Seckey, dbpass
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

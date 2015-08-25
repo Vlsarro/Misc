@@ -1,6 +1,8 @@
-<html>
-<head><title>Kindergarten Test</title></head>
+<!-- Нужно переделать на яндекс.карты, это пример для гуглмапс  -->
 
+
+<!DOCTYPE html>
+<html>
 <h1>Kindergarten Test</h1>
 
 <form method="post" action="./">
@@ -11,7 +13,6 @@
     <input type="submit" value="Search" />
 </form>
 
-
 {% if kindergartens %}
 <h2>Kindergartens near you</h2>
 <ul>
@@ -19,4 +20,37 @@
 	<li><b>{{ kindergarten.name }}</b>: distance: {{ kindergarten.distance }}</li>
 	{% endfor %}
 </ul>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var latlng = new google.maps.LatLng("{{ latitude }}", "{{ longitude }}");
+		var mapOptions = {
+			zoom: 15,
+			center: latlng,
+			mapTypeControl: false,
+			navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+			mapTypeId: google.maps.mapTypeId.ROADMAP
+		};
+		map = new google.maps.Map($('.map')[0], mapOptions);
+
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			title: "Jestes tutaj"
+		});
+
+		{% for kindergarten in kindergartens %}
+			latlng = new google.maps.LatLng("{{ kindergarten.location.y }}", "{{ kindergarten.location.x }}");
+			new google.maps.Marker({
+				position: latlng,
+				map: map,
+				title:"{{ kindergarten.name }}"
+			});
+		{% endfor %}
+	});
+</script>
+<div class="map" style="width: 400px; height: 400px;"></div>
 {% endif %}
+</html>
+

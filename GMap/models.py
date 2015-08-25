@@ -23,7 +23,7 @@ class kindergarten(models.Model):
         if not self.location:
             address = u'%s %s' % (self.city, self.address)
             address = address.encode('utf-8')
-            geocoder = geocoders.GoogleV3()
+            geocoder = geocoders.Yandex()
             try:
                 _, latlon = geocoder.geocode(address)
             except (URLError, ValueError):
