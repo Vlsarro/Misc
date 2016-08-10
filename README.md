@@ -1,2 +1,2 @@
 # Misc
-Django-container project for various small apps
+Random code chunks and small django apps
